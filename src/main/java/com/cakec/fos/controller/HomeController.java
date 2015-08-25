@@ -3,6 +3,7 @@ package com.cakec.fos.controller;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +45,22 @@ public class HomeController {
 //		UserDAO userDAO = new UserDAO();
 		userDAO.save(userCargo);
 	}
+	
+	
+	@RequestMapping(value="/signup")
+	public void signup(HttpServletRequest request) throws IOException{
+		System.out.println("In signup page");
+		System.out.println(request.getParameter("email"));
+		System.out.println(request.getParameter("username"));
+		System.out.println(request.getParameter("password"));
+		
+	}
+	
+	@RequestMapping(value="/landing")
+	public ModelAndView landing(HttpServletRequest request) throws IOException{
+		System.out.println("In landing page");
+		return new ModelAndView("landing");
+		
+	}
+	
 }
