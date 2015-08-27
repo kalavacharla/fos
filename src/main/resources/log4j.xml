@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- Error Logging -->
+	<appender name="ErrorLog" class="org.apache.log4j.RollingFileAppender">
+	  <param name="file" value="FOS/error.log" />
+	  <param name="MaxFileSize" value="5000KB" />
+	  <param name="MaxBackupIndex" value="10" />
+	  <layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%5p %d{ISO8601} - %m%n" />
+	  </layout>
+	</appender>
+	
+	<!-- General Application Logging -->
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="FOS/fos.log" />
+		<param name="MaxFileSize" value="5000KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%5p %d{ISO8601} - %m%n" />
+		</layout>
+	</appender>
+	
+
+	<!-- Error logging -->
+	 <logger name="com.cakec.fos.error">
+	  <level value="ERROR"/>
+	  <appender-ref ref="ErrorLog"/>
+	 </logger>
+	
+	<!-- Application Loggers -->
+	<logger name="com.cakec.fos">
+		<level value="debug" />
+	</logger>
+	
+	<!-- Root Logger -->
+	<root>
+		<priority value="info" />
+		<appender-ref ref="file" />
+		<appender-ref ref="ErrorLog" />
+		<appender-ref ref="console" />
+	</root>
+	
+</log4j:configuration>
