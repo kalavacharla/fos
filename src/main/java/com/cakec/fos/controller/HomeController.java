@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,8 @@ import com.cakec.fos.domain.UserCargo;
 
 @Controller
 public class HomeController {
-
+	private static final Logger logger = Logger.getLogger(HomeController.class);
+	
 	@Autowired
 	UserDAO userDAO;
 	
@@ -32,7 +34,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/hit")
 	public void view(HttpServletResponse response) throws IOException{
-		System.out.println("sdjkfhsdjkshdfdjkghdfuwerhwer");
+		logger.debug("sdjkfhsdjkshdfdjkghdfuwerhwer");
 		UserCargo userCargo = new UserCargo();
 		userCargo.setUsername("Test");
 		userCargo.setPasswd("Test");
@@ -49,16 +51,16 @@ public class HomeController {
 	
 	@RequestMapping(value="/signup")
 	public void signup(HttpServletRequest request) throws IOException{
-		System.out.println("In signup page");
-		System.out.println(request.getParameter("email"));
-		System.out.println(request.getParameter("username"));
-		System.out.println(request.getParameter("password"));
+		logger.debug("In signup page");
+		logger.debug(request.getParameter("email"));
+		logger.debug(request.getParameter("username"));
+		logger.debug(request.getParameter("password"));
 		
 	}
 	
 	@RequestMapping(value="/landing")
 	public ModelAndView landing(HttpServletRequest request) throws IOException{
-		System.out.println("In landing page");
+		logger.debug("Landing page");
 		return new ModelAndView("landing");
 		
 	}
