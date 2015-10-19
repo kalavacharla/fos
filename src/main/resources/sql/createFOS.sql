@@ -2,14 +2,18 @@
 create table user(
 	user_id int(10) not null auto_increment,
     username varchar(30) not null,
-    passwd varchar(100) not null,
+    salt varbinary(100) not null,
+    passwd varbinary(200) not null,
     email varchar(100) not null,
     dob date not null,
     isActive varchar(1) not null,
     createdby varchar(30) not null, 
     createdOn datetime not null, 
     lastModifiedDate datetime null,
-    PRIMARY KEY(user_id)
+    lastModifiedBy varchar(30) null,
+	PRIMARY KEY(user_id),
+    CONSTRAINT usernameConstraint UNIQUE (username),
+    CONSTRAINT emailConstraint UNIQUE (email)
     
 ) ;
 
@@ -26,7 +30,8 @@ create table profil(
     createdby varchar(30) not null, 
     createdOn datetime not null, 
     lastModifiedDate datetime null,
-    PRIMARY KEY(user_id), 
+    lastModifiedBy varchar(30) null,
+    PRIMARY KEY(profile_id), 
     
     CONSTRAINT profil_user 
 	FOREIGN KEY (user_id) 
@@ -43,6 +48,7 @@ create table media(
     createdby varchar(30) not null, 
     createdOn datetime not null, 
     lastModifiedDate datetime null,
+    lastModifiedBy varchar(30) null,
     PRIMARY KEY(media_id),
     
     CONSTRAINT media_user 
@@ -64,6 +70,8 @@ create table friends(
 	REFERENCES  user(user_id)
     
 ) ;
+
+
 
 create table comments(
 	comment_id int(10) not null auto_increment,
