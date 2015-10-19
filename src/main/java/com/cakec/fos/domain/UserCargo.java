@@ -1,7 +1,9 @@
 package com.cakec.fos.domain;
 
+import java.util.Arrays;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,13 +17,25 @@ public class UserCargo {
 	@GeneratedValue
 	private int user_id;
 	private String username;
-	private String passwd;
-	private String firstname;
-	private String lastname;
+	private byte[] salt;
+	private byte[] passwd;
+	private String email;
 	private Date dob;
 	private String isActive;
-	private String createdby;
-	
+	private String createdBy;
+	private Date createdOn;
+	private String lastModifiedBy;
+	private Date lastModifiedDate;
+	@Override
+	public String toString() {
+		return "UserCargo [user_id=" + user_id + ", username=" + username
+				+ ", salt=" + Arrays.toString(salt) + ", passwd="
+				+ Arrays.toString(passwd) + ", email=" + email + ", dob=" + dob
+				+ ", isActive=" + isActive + ", createdBy=" + createdBy
+				+ ", createdOn=" + createdOn + ", lastModifiedBy="
+				+ lastModifiedBy + ", lastModifiedDate=" + lastModifiedDate
+				+ "]";
+	}
 	public int getUser_id() {
 		return user_id;
 	}
@@ -34,23 +48,23 @@ public class UserCargo {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getPasswd() {
+	public byte[] getSalt() {
+		return salt;
+	}
+	public void setSalt(byte[] salt) {
+		this.salt = salt;
+	}
+	public byte[] getPasswd() {
 		return passwd;
 	}
-	public void setPasswd(String passwd) {
+	public void setPasswd(byte[] passwd) {
 		this.passwd = passwd;
 	}
-	public String getFirstname() {
-		return firstname;
+	public String getEmail() {
+		return email;
 	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-	public String getLastname() {
-		return lastname;
-	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public Date getDob() {
 		return dob;
@@ -64,11 +78,11 @@ public class UserCargo {
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
 	}
-	public String getCreatedby() {
-		return createdby;
+	public String getCreatedBy() {
+		return createdBy;
 	}
-	public void setCreatedby(String createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
 	public Date getCreatedOn() {
 		return createdOn;
@@ -76,12 +90,21 @@ public class UserCargo {
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
+	public String getLastModifiedBy() {
+		return lastModifiedBy;
+	}
+	public void setLastModifiedBy(String lastModifiedBy) {
+		this.lastModifiedBy = lastModifiedBy;
+	}
 	public Date getLastModifiedDate() {
 		return lastModifiedDate;
 	}
 	public void setLastModifiedDate(Date lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
-	private Date createdOn;
-	private Date lastModifiedDate;
+	
+	
+	
+	
+	
 }
