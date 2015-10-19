@@ -10,15 +10,7 @@
 
 </head>
 <body>
-<h1>Sign up</h1>
-	<form action="signup" method="post">
-		<label>Username</label>
-		<input type="text" name="username">
-		<label>Email</label>
-		<input type="text" name="email">
-		<label>Password</label>
-		<input type="password" name="password">
-		<input type="Submit" value="Submit" id="signupSubmit" />
-	</form>
+	<h1>In Profile page</h1>
+	
 </body>
 </html>
