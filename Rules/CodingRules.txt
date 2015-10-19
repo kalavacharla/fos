@@ -1,0 +1,8 @@
+Test packages must be named as com.cakec.fos.test.*
+Test classes must have name of the original class concantenated with "Test"
+While creating the test methods, the name of the method should be nameOfOrginalMethod+TestName+"Test" for example, createUserNullUserAddTest
+No hardcoding in  any classes whatsoever. Not even in test classes. 
+All the constants must be defined in a class or properties file as per requirement.
+All domain objects should have a "Cargo" suffix to it.
+While creating the tables, all the createdBy, createdOn, lastModified etc should be at the of the table. Proper time and consideration should be given to the design of the table.
+All the logs should contain the error stack trace correctly printed out.
